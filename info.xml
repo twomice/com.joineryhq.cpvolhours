@@ -20,7 +20,7 @@
   <compatibility>
     <ver>5.0</ver>
   </compatibility>
-  <comments>This is a new, undeveloped module</comments>
+  <comments>Developed for Care Partners Texas by Joinery. This extension assumes specific CiviCRM configurations which it does not define.</comments>
   <classloader>
     <psr4 prefix="Civi\" path="Civi"/>
   </classloader>

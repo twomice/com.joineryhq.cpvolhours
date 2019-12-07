@@ -4,6 +4,32 @@ require_once 'cpvolhours.civix.php';
 use CRM_Cpvolhours_ExtensionUtil as E;
 
 /**
+ * Implements hook_civicrm_links().
+ *
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_links/
+ */
+function cpvolhours_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values) {
+  if (
+    $op == 'view.contact.activity'
+    && $objectName == 'Contact'
+  ) {
+    $contact = civicrm_api3('contact', 'getsingle', array(
+      'id' => $objectId,
+    ));
+
+    if (in_array('Team', $contact['contact_sub_type'])) {
+      $links[] = array(
+        'name' => ts('Batch Hours'),
+        'url' => CRM_Utils_System::url('civicrm/cpvolhours/addhours', 'reset=1&cid=' . $objectId, NULL, NULL, NULL, NULL, TRUE),
+        'title' => 'Enter Volunteer Hours',
+        'class' => 'crm-i fa-clock-o',
+      );
+    }
+
+  }
+}
+
+/**
  * Implements hook_civicrm_pageRun().
  *
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_pageRun/
