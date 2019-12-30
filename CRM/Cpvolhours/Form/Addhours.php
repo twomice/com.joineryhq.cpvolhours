@@ -52,7 +52,7 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
       'relationship_type_id' => $relationshipTypeId,
       'is_active' => 1,
       'contact_id_a' => $this->teamCid,
-      'api.Contact.getSingle' => ['id' => "\$value.contact_id_b", 'return' => ["sort_name"]],
+      'api.Contact.getSingle' => ['id' => "\$value.contact_id_b", 'return' => ["sort_name", "is_deceased"]],
       'options' => array(
         'limit' => 0,
       ),
@@ -64,6 +64,10 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
     $sortRows = array();
     $defaultValues = array();
     foreach ($relationships['values'] as $relationship) {
+      if ($relationship['api.Contact.getSingle']['is_deceased']) {
+        // Volunteer is deceased; omit them.
+        continue;
+      }
       $serviceTypeValue = CRM_Utils_Array::value("custom_{$this->serviceTypeCustomFieldId}", $relationship);
       $volunteerCid = $relationship['api.Contact.getSingle']['id'];
       $this->volunteerCids[] = $volunteerCid;
