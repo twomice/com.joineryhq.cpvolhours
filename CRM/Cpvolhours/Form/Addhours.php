@@ -15,7 +15,7 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
 
   public function buildQuickForm() {
     $this->teamCid = CRM_Utils_Request::retrieve('cid', 'Int', $this);
-    
+
     // Build the list of options for '"Help Type" value field.n
     $this->helpTypeCustomFieldId = CRM_Core_BAO_CustomField::getCustomFieldId('Help_Type', 'Service_details');
     $helpTypeOptionGroupId = civicrm_api3('customField', 'getvalue', array(
@@ -76,11 +76,12 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
       $row['serviceTypeLabel'] = CRM_Utils_Array::value($serviceTypeValue, $serviceTypeOptions);
       $row['hoursElementName'] = "hours_{$volunteerCid}";
       $row['helpTypeElementName'] = "helpType_{$volunteerCid}";
+      // field type, name, label is_required
       $this->add(
-        'text', // field type
-        $row['hoursElementName'] , // field name
-        ts('Hours'), // field label
-        TRUE // is required
+        'text',
+        $row['hoursElementName'],
+        ts('Hours'),
+        TRUE
       );
       $this->add(
         'select',
@@ -100,10 +101,10 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
     array_multisort($sortRows, $rows);
     $this->assign('rows', $rows);
 
-
     // Add "service date" field, defaulting to current date.
     $attributes = array(
-      'class' => 'dateplugin' // this css class prevents the datepicker from being autofocused on popup load
+      // this css class prevents the datepicker from being autofocused on popup load
+      'class' => 'dateplugin',
     );
     $this->add('datepicker', 'service_date', ts('Service date'), $attributes, TRUE, ['time' => FALSE]);
     $defaultValues['service_date'] = CRM_Utils_Date::getToday();
@@ -154,7 +155,6 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
     }
     parent::postProcess();
   }
-
 
   /**
    * Get the fields/elements defined in this form.

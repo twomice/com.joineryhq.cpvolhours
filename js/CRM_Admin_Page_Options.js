@@ -9,7 +9,7 @@ CRM.$(function($) {
     'is_reserved',
     'is_active',
   ];
-  for (i in colnames) {
+  for (var i in colnames) {
     colname = colnames[i];
     idx = CRM.$('table#options td.crm-admin-options-'+ colname).index() + 1; 
     CRM.$('table#options td.crm-admin-options-'+ colname +', table#options thead th:nth-child('+ idx +')').hide();

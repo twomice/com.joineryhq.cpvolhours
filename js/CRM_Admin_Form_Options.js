@@ -4,16 +4,12 @@ CRM.$(function($) {
   var handleSelectChange = function handleSelectChange(e){
     $('input#value').val(this.value);
     $('input#label').val(this.value);
-  }
+  };
 
   jqEl = $('input#value');
   jqEl
     .hide()
-    .before('\
-      <select class="crm-form-select crm-select2" id="cpvolhours-select-value">\n\
-        <option></option>\n\
-      </select>\n\
-    ');
+    .before('\ <select class="crm-form-select crm-select2" id="cpvolhours-select-value">\n\ <option></option>\n\ </select>\n\ ');
 
   //Once we have the option values... we can continue with processing fields with values
   $.each(CRM.vars.cpvolhours.serviceTypeOptions, function(opValue, opLabel) {
