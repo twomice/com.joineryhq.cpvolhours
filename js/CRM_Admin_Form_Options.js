@@ -4,8 +4,9 @@ CRM.$(function($) {
   var handleSelectChange = function handleSelectChange(e){
     $('input#value').val(this.value);
     $('input#label').val(this.value);
-  }
+  };
 
+  // jshint multistr: true
   jqEl = $('input#value');
   jqEl
     .hide()

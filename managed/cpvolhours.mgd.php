@@ -10,17 +10,17 @@
  * https://civicrm.org/blogs/totten/api-and-art-installation).
  */
 
-return array (
-  array (
+return array(
+  array(
     'name' => 'CRM_Cpvolhours_OptionGroup_HoursPerRole',
     'entity' => 'OptionGroup',
     'params' =>
-    array (
+    array(
       "name" => "cpvolhours_hours_per_role",
       "title" => "CarePartners Volunteer Hours Per Role",
       "is_reserved" => "1",
       "is_active" => "1",
-      "is_locked" => "0"
+      "is_locked" => "0",
     ),
   ),
 );
