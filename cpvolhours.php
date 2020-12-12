@@ -19,7 +19,7 @@ function cpvolhours_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
 
     if (in_array('Team', $contact['contact_sub_type'])) {
       $links[] = array(
-        'name' => ts('Batch Volunteer Hours'),
+        'name' => E::ts('Batch Volunteer Hours'),
         'url' => CRM_Utils_System::url('civicrm/cpvolhours/addhours', 'reset=1&cid=' . $objectId, NULL, NULL, NULL, NULL, TRUE),
         'title' => 'Enter Volunteer Hours',
         'class' => 'crm-i fa-clock-o',
