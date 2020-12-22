@@ -80,13 +80,13 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
       $this->add(
         'text',
         $row['hoursElementName'],
-        ts('Hours'),
+        E::ts('Hours'),
         TRUE
       );
       $this->add(
         'select',
         $row['helpTypeElementName'],
-        ts('Help Type'),
+        E::ts('Help Type'),
         $helpTypeOptions,
         TRUE
       );
@@ -106,7 +106,7 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
       // this css class prevents the datepicker from being autofocused on popup load
       'class' => 'dateplugin',
     );
-    $this->add('datepicker', 'service_date', ts('Service date'), $attributes, TRUE, ['time' => FALSE]);
+    $this->add('datepicker', 'service_date', E::ts('Service date'), $attributes, TRUE, ['time' => FALSE]);
     $defaultValues['service_date'] = CRM_Utils_Date::getToday();
 
     $this->addButtons(array(
@@ -148,7 +148,7 @@ class CRM_Cpvolhours_Form_Addhours extends CRM_Core_Form {
         'assignee_id' => $volunteerCid,
         'activity_date_time' => $values['service_date'],
         'activity_type_id' => 'Service hours',
-        'subject' => ts('Team service hours (batch entry)'),
+        'subject' => E::ts('Team service hours (batch entry)'),
         "custom_{$isLegacyCustomFieldId}" => 0,
       );
       $activity = civicrm_api3('activity', 'create', $apiParams);
