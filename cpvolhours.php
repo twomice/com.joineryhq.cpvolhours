@@ -17,7 +17,9 @@ function cpvolhours_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
       'id' => $objectId,
     ));
 
-    if (in_array('Team', $contact['contact_sub_type'])) {
+    $contactSubTypes = (array)$contact['contact_sub_type'];
+    error_log("cpvolhours: contact_sub_type for contact id={$objectId} : ".  var_export($contactSubTypes, true ) );
+    if (in_array('Team', $contactSubTypes)) {
       $links[] = array(
         'name' => E::ts('Batch Volunteer Hours'),
         'url' => CRM_Utils_System::url('civicrm/cpvolhours/addhours', 'reset=1&cid=' . $objectId, NULL, NULL, NULL, NULL, TRUE),
