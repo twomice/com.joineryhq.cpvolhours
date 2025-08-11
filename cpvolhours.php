@@ -18,7 +18,6 @@ function cpvolhours_civicrm_links($op, $objectName, $objectId, &$links, &$mask, 
     ));
 
     $contactSubTypes = (array)$contact['contact_sub_type'];
-    error_log("cpvolhours: contact_sub_type for contact id={$objectId} : ".  var_export($contactSubTypes, true ) );
     if (in_array('Team', $contactSubTypes)) {
       $links[] = array(
         'name' => E::ts('Batch Volunteer Hours'),
