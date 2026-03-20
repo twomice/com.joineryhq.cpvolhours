@@ -18,13 +18,22 @@
   <version>1.1</version>
   <develStage>beta</develStage>
   <compatibility>
-    <ver>5.0</ver>
+    <ver>5.51</ver>
   </compatibility>
   <comments>Developed for Care Partners Texas by Joinery. This extension assumes specific CiviCRM configurations which it does not define.</comments>
   <classloader>
     <psr4 prefix="Civi\" path="Civi"/>
+    <psr0 prefix="CRM_" path="."/>
   </classloader>
   <civix>
     <namespace>CRM/Cpvolhours</namespace>
+    <format>25.10.2</format>
   </civix>
+  <mixins>
+    <mixin>menu-xml@1.0.0</mixin>
+    <mixin>mgd-php@2.0.0</mixin>
+    <mixin>smarty-v2@1.0.3</mixin>
+    <mixin>scan-classes@1.0.0</mixin>
+  </mixins>
+  <upgrader>CiviMix\Schema\Cpvolhours\AutomaticUpgrader</upgrader>
 </extension>
